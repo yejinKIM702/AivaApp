@@ -12,9 +12,15 @@ class CommunityScreen extends StatefulWidget {
 class _CommunityScreenState extends State<CommunityScreen> {
   // Sample banner items
   final List<String> _banners = [
+<<<<<<< HEAD
     'assets/images/community_banner.png',
     'assets/images/community_banner.png',
     'assets/images/community_banner.png',
+=======
+    'assets/images/banner1.png',
+    'assets/images/banner2.png',
+    'assets/images/banner3.png',
+>>>>>>> 517ef8809e9546401b7f4613e14bff4b3bf432db
   ];
 
   // PageController for banner carousel
@@ -126,6 +132,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
             ),
         ],
       ),
+<<<<<<< HEAD
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -176,10 +183,71 @@ class _CommunityScreenState extends State<CommunityScreen> {
                                 ? Colors.blue
                                 : Colors.grey[400],
                           ),
+=======
+      body: Column(
+        children: [
+          // Banner carousel
+          SizedBox(
+            height: 160,
+            child: Stack(
+              children: [
+                PageView.builder(
+                  itemCount: _banners.length,
+                  controller: _pageController,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentBannerIndex = index;
+                    });
+                  },
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '배너 ${index + 1}',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                // Page indicator
+                Positioned(
+                  bottom: 8,
+                  left: 0,
+                  right: 0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      _banners.length,
+                      (index) => Container(
+                        width: 8,
+                        height: 8,
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _currentBannerIndex == index
+                              ? Colors.blue
+                              : Colors.grey[400],
+>>>>>>> 517ef8809e9546401b7f4613e14bff4b3bf432db
                         ),
                       ),
                     ),
                   ),
+<<<<<<< HEAD
                 ],
               ),
             ),
@@ -189,6 +257,17 @@ class _CommunityScreenState extends State<CommunityScreen> {
             ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
+=======
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 8),
+          const Divider(height: 1),
+          // Feed list
+          Expanded(
+            child: ListView.separated(
+>>>>>>> 517ef8809e9546401b7f4613e14bff4b3bf432db
               padding: const EdgeInsets.all(16),
               itemCount: _posts.length,
               separatorBuilder: (_, __) => const SizedBox(height: 12),
@@ -197,8 +276,13 @@ class _CommunityScreenState extends State<CommunityScreen> {
                 return _PostCard(post: post);
               },
             ),
+<<<<<<< HEAD
           ],
         ),
+=======
+          ),
+        ],
+>>>>>>> 517ef8809e9546401b7f4613e14bff4b3bf432db
       ),
       bottomNavigationBar: const NavBar(currentIndex: 1),
       floatingActionButton: FloatingActionButton(
